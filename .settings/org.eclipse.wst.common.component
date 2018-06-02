@@ -7,7 +7,7 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
                 
         <property name="java-output-path" value="/CouponsWeb2018/build/classes"/>
-        <property name="context-root" value="CouponsWeb2018"/>
+        <property name="context-root" value="CouponsWebRest"/>
             
     </wb-module>
     
