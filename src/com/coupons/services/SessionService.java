@@ -28,7 +28,7 @@ public class SessionService {
 	}
 
 	@GET
-	@Path("CheckSession")
+	@Path("sessionCheck")
 	public Object checkSession() {
 		HttpSession session = this.httpRequest.getSession();
 		if (session.getAttribute("facade") == null)
@@ -41,7 +41,7 @@ public class SessionService {
 	}
 
 	@GET
-	@Path("Store")
+	@Path("shop")
 	public Object getStore() {
 
 		try {
