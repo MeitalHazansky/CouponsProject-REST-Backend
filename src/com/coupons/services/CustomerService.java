@@ -38,9 +38,9 @@ public class CustomerService {
 
 	public CustomerService() {
 	}
-
-	@Path("login")
+	
 	@POST
+	@Path("login")
 	@Produces(MediaType.APPLICATION_JSON)
 	@LoginFilterAnnotation
 	public Object login(LoginInfo loginInfo) {

@@ -38,9 +38,9 @@ public class AdminService {
 
 	@Context
 	private HttpServletRequest request;
-
-	@Path("login")
+	
 	@POST
+	@Path("login")
 	@Produces(MediaType.APPLICATION_JSON)
 	@LoginFilterAnnotation
 	public Object login(LoginInfo loginInfo) {
@@ -59,10 +59,11 @@ public class AdminService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("company")
+	
 	@POST
+	@Path("company")	
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object createCompany(Company company) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -75,10 +76,11 @@ public class AdminService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("company/{id}")
+	
 	@DELETE
+	@Path("company/{id}")	
 	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object removeCompany(@PathParam("id") int id) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -91,10 +93,11 @@ public class AdminService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("company")
+	
 	@PUT
+	@Path("company")	
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object updateCompany(Company company) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -107,10 +110,11 @@ public class AdminService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("company/{id}")
+	
 	@GET
+	@Path("company/{id}")	
 	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCompany(@PathParam("id") int id) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -122,9 +126,10 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("company")
+	
 	@GET
+	@Path("company")
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getAllCompanies() {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -136,10 +141,11 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("customer")
+	
 	@POST
+	@Path("customer")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object createCustomer(Customer customer) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -152,10 +158,11 @@ public class AdminService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("customer/{id}")
+	
 	@DELETE
+	@Path("customer/{id}")	
 	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object removeCustomer(@PathParam("id") int id) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -168,10 +175,11 @@ public class AdminService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("customer")
+	
 	@PUT
+	@Path("customer")
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object updateCustomer(Customer customer) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -185,10 +193,11 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("customer/{id}")
+	
 	@GET
+	@Path("customer/{id}")	
 	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCustomer(@PathParam("id") int id) {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -200,9 +209,10 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("customer")
+	
 	@GET
+	@Path("customer")	
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getAllCustomers() {
 		AdminFacade admin = (AdminFacade) request.getSession().getAttribute("facade");
@@ -214,9 +224,9 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("income")
+	
 	@GET
+	@Path("income")	
 	@SessionFilterAnnotation
 	public Object getAllIncome() {
 
@@ -227,9 +237,9 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("income/company")
+	
 	@GET
+	@Path("income/company")	
 	@SessionFilterAnnotation
 	public Object getIncomeByCompany(@QueryParam("name") String name) {
 
@@ -240,9 +250,10 @@ public class AdminService {
 		}
 
 	}
-
-	@Path("income/customer")
+	
 	@GET
+	@Path("income/customer")	
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getIncomeByCustomer(@QueryParam("name") String name) {
 

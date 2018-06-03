@@ -39,9 +39,9 @@ public class CompanyService {
 
 	public CompanyService() {
 	}
-
-	@Path("login")
+	
 	@POST
+	@Path("login")
 	@Produces(MediaType.APPLICATION_JSON)
 	@LoginFilterAnnotation
 	public Object login(LoginInfo loginInfo) {
@@ -61,10 +61,11 @@ public class CompanyService {
 		}
 
 	}
-
-	@Path("coupon")
+	
 	@POST
+	@Path("coupon")	
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object createCoupon(Coupon coupon) {
 		CompanyFacade company = (CompanyFacade) request.getSession().getAttribute("facade");
@@ -81,10 +82,11 @@ public class CompanyService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("coupon/{id}")
+	
 	@DELETE
+	@Path("coupon/{id}")	
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object removeCoupon(@PathParam("id") int id) {
 
@@ -100,9 +102,9 @@ public class CompanyService {
 		}
 
 	}
-
-	@Path("coupon")
+	
 	@PUT
+	@Path("coupon")	
 	@Consumes(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object updateCoupon(Coupon coupon) {
@@ -120,10 +122,11 @@ public class CompanyService {
 			return new ApplicationMessage(ResponseCodes.SYSTEM_EXCEPTION, e.getMessage());
 		}
 	}
-
-	@Path("coupon/{id}")
+	
 	@GET
+	@Path("coupon/{id}")	
 	@Consumes(MediaType.TEXT_PLAIN)
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCoupon(@PathParam("id") int id) {
 
@@ -136,9 +139,10 @@ public class CompanyService {
 		}
 
 	}
-
-	@Path("coupon")
+	
 	@GET
+	@Path("coupon")	
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getAllCoupon() {
 
@@ -151,9 +155,10 @@ public class CompanyService {
 		}
 
 	}
-
-	@Path("couponByType/{couponType}")
+	
 	@GET
+	@Path("couponByType/{couponType}")	
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getAllCouponByType(@PathParam("couponType") CouponType couponType) {
 
@@ -169,6 +174,7 @@ public class CompanyService {
 
 	@GET
 	@Path("couponUpToDate")
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCouponUpToDate(@QueryParam("date") long date) {
 
@@ -183,6 +189,7 @@ public class CompanyService {
 
 	@GET
 	@Path("couponUpToPrice")
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCouponUpToPrice(@QueryParam("price") double price) {
 
@@ -198,6 +205,7 @@ public class CompanyService {
 
 	@GET
 	@Path("company")
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCompanyInformation() {
 
@@ -211,6 +219,7 @@ public class CompanyService {
 
 	@GET
 	@Path("income")
+	@Produces(MediaType.APPLICATION_JSON)
 	@SessionFilterAnnotation
 	public Object getCompanyIncomeInfo() {
 		CompanyFacade company = (CompanyFacade) request.getSession().getAttribute("facade");
